@@ -1,0 +1,10 @@
+<html>
+<head>
+    <title>添加服务器</title>
+</head>
+<body>
+
+<P> ${update_result}. </P>
+
+</body>
+</html>

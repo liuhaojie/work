@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration     
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.maven.medol.ServerInfo" alias="ServerInfo"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="jdbc" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://192.168.6.195:3306/java_learn?characterEncoding=ISO8859-1" />
+				<property name="username" value="java" />
+				<property name="password" value="123456" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/maven/medol/ServerInfo.xml" />
+	</mappers>
+	
+</configuration> 

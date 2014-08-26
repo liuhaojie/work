@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>服务器浏览</title>
+	<script type="text/javascript" src="resources/scripts/jquery-1.7.1.min.js"></script>	
+</head>
+<body>
+   <label for="games">服务器列表</label>
+<P> 
+<select id="games">	
+	<option value="-1">请您选择服务器</option>
+#foreach($item in $gameList)	
+		<option value="$item.Id">$item.GameName</option>
+#end
+</select>
+</P>
+
+<script type="text/javascript">
+	jQuery(function(){
+		$("#games").on("change",function(){
+			jQuery.ajax({
+				url:"getServerList",
+				type:"get",
+				dataType: "json",
+				data:{gameID:$(this).val()},
+				success:function(data){
+					var html='';
+					html+='<option value="-1">请您选择服务器</option>'
+					for(var o in data){
+						html+='<option value="'+data[o]["id"]+'">'+data[o]["gameName"]+'</option>'
+					}
+					$("#servers").empty().html(html);
+				}			
+			})
+		});
+	});
+</script>
+</body>
+</html>

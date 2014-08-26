@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ServerInfo">
+	<resultMap type="ServerInfo" id="Server-Result">
+		<result property="id" column="id" javaType="Integer" />
+		<result property="gameID" column="gameID" javaType="Integer" />
+		<result property="gameName" column="gameName" javaType="String" />
+	</resultMap>
+
+	<select id="queryById" parameterType="Integer" resultMap="Server-Result">
+		select
+		* from server where id = #{id}
+	</select>
+
+	<select id="queryServersByGameId" parameterType="Integer"
+		resultMap="Server-Result">
+		select * from server where gameID = #{gameID}
+	</select>
+
+	<insert id="updateServers" parameterType="java.util.List">
+		insert into server(id, gameID, gameName)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id}, #{item.gameID}, #{item.gameName})
+		</foreach>
+	</insert>
+
+</mapper>
